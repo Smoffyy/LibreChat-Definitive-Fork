@@ -29,7 +29,7 @@ function Footer({ className }: { className?: string }) {
       ? config.customFooter
       : '[LibreChat ' +
         Constants.VERSION +
-        '](https://librechat.ai) - ' +
+        '](https://github.com/Smoffyy/LibreChat-Static/releases) - ' +
         localize('com_ui_latest_footer')
   ).split('|');
 
