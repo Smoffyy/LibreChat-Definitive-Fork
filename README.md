@@ -1,4 +1,4 @@
-# LibreChat Static — The Definitive v0.8.4 Edition
+# LibreChat Definitive Fork — The Definitive v0.8.4 Edition
 
 A fork of [LibreChat v0.8.4](https://github.com/danny-avila/LibreChat/releases/tag/v0.8.4) created to *freeze* this version, preserving its core functionality while introducing minimal enhancements such as Quality of Life improvements and ensuring everything is local.
 
