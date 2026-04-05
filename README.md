@@ -3,7 +3,7 @@
 A fork of [LibreChat v0.8.4](https://github.com/danny-avila/LibreChat/releases/tag/v0.8.4) created to *freeze* this version, preserving its core functionality while introducing minimal enhancements such as Quality of Life improvements and ensuring everything is local.
 
 <p align="center">
-  <img src="logo.svg" alt="LibreChat Logo" width="200"/>
+  <img src="logo.svg" alt="LibreChat Original Logo" width="200"/>
 </p>
 
 If you want the original, **unmodified version** of LibreChat v0.8.4, check out the [LibreChat-0.8.4-base](https://github.com/Smoffyy/LibreChat-Static/tree/librechat-0.8.4-base) branch.
@@ -87,15 +87,15 @@ TBD...
 For most people, using Docker Desktop is the easiest way of getting LibreChat running. Below is what/how you're going to get Docker Desktop working with LibreChat:
 
 First you need the following:
-- [Git](https://git-scm.com/install/)
-- [Docker](https://www.docker.com/products/docker-desktop/)
+- **[Git](https://git-scm.com/install/)**
+- **[Docker](https://www.docker.com/products/docker-desktop/)**
 
 
 Next, installation:
 1. Clone the repository
   ```
-  git clone https://github.com/Smoffyy/LibreChat-Static.git
-  cd LibreChat-Static
+  git clone https://github.com/Smoffyy/LibreChat-Definitive-Fork
+  cd LibreChat-Definitive-Fork
   ```
 2. Create the Eviorment File
   ```
