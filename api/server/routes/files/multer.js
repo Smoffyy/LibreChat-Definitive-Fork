@@ -65,7 +65,17 @@ const createFileFilter = (customFileConfig) => {
     });
 
     if (!defaultFileConfig.checkType(file.mimetype, endpointFileConfig.supportedMimeTypes)) {
-      return cb(new Error('Unsupported file type: ' + file.mimetype), false);
+      const isBinary =
+        file.mimetype.startsWith('image/') ||
+        file.mimetype.startsWith('audio/') ||
+        file.mimetype.startsWith('video/');
+
+      if (isBinary) {
+        return cb(new Error('Unsupported file type: ' + file.mimetype), false);
+      }
+
+      file.mimetype = 'text/plain';
+      file.originalname = file.originalname.replace(/\.[^.]+$/, '.txt');
     }
 
     cb(null, true);

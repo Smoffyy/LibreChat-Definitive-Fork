@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - More logos
 - More examples in yaml and config files
+- Docs
+- If an uploads file type is unknown, treat it as plain text instead of erroring out
 
 ### Changed
 - Package version naming, changed to `0.8.4-definitive`
