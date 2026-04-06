@@ -101,7 +101,7 @@ Here is how you structure a single model entry. You can copy this block for ever
   preset:
     endpoint: "lm-studio"      # Must match your LM-Studio endpoint name
     model: "qwen3.5-9b"        # The exact model ID in LM-Studio
-    maxContextTokens: 100000   # Adjust based on your model's actual limit
+    maxContextTokens: 100000000   # Adjust based on your model's actual limit, put it to a high number because the UI will stop before you actually hit context.
 ```
 
 **Key Fields Explained:**
@@ -128,6 +128,7 @@ You can organize models into collapsible sections using the `group` field. This 
   preset:
     endpoint: "lm-studio"
     model: "qwen2.5-vl-7b-instruct"
+    maxContextTokens: 100000000
 
 # Example of a standalone model (no group)
 - name: "Qwen 3"
@@ -137,6 +138,7 @@ You can organize models into collapsible sections using the `group` field. This 
   preset:
     endpoint: "lm-studio"
     model: "qwen3-8b"
+    maxContextTokens: 100000000
 ```
 
 Once you have added your models, save `librechat.yaml` and restart LibreChat. The UI should now only show your LM-Studio models in the dropdown!
