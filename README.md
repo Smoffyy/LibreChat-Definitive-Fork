@@ -10,6 +10,8 @@ If you want the original, **unmodified version** of LibreChat v0.8.4, check out 
 
 This project is licensed under the same MIT License as the original LibreChat. By downloading, using, or modifying this project, you agree to the terms of the [original license](https://github.com/Smoffyy/LibreChat-Static/blob/librechat-0.8.4-base/LICENSE) of version v0.8.4.
 
+> **This is not an overhaul. It is a stable, long-term maintenance fork intended to preserve v0.8.4 exactly as-is.**
+
 ---
 
 ### Credits / Shoutouts (Original Creators)
@@ -85,6 +87,9 @@ Think of it as:
 
 ## What's Different From the Original LibreChat
 
+There's nothing different from the Original LibreChat, just a few changes that are Quality of Life features. Other than that, this is strictly the base [LibreChat v0.8.4](https://github.com/danny-avila/LibreChat/releases/tag/v0.8.4), meant to be maintained for as long as possible, without the worry of features breaking or losing access.
+
+### Docker wise
 The original LibreChat relied on Docker Hub to pull several pre-built images at runtime whenever you ran `docker compose up`. This means your setup depended on those images remaining available on Docker Hub forever — if any of them got deleted, moved, or changed, your installation would break.
 
 This fork changes that by building **every single service from source**, bundled directly inside this repository. Nothing is pulled at runtime.
@@ -128,7 +133,7 @@ The only internet access that happens at build time is fetching packages from of
 
 ---
 
-## Prerequisites
+## Prerequisites (Easiest way to install)
 
 - **[Git](https://git-scm.com/install/)**
 - **[Docker](https://www.docker.com/products/docker-desktop/)**
@@ -138,9 +143,6 @@ The only internet access that happens at build time is fetching packages from of
 ## NPM Installation (Dev)
 
 If you prefer using NPM, or are actively developing it, please refer to the [NPMInstallation.md](https://github.com/Smoffyy/LibreChat-Definitive-Fork/blob/dev/setupdocs/NPMInstallation.md) file.
-
-
-
 
 ## Docker Installation
 
