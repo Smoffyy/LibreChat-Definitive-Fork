@@ -26,7 +26,7 @@ function Footer({ className }: { className?: string }) {
 
   const footerLabel = `LibreChat (v0.8.4) • Definitive v${Constants.VERSION}`;
 
-  const defaultFooter = `[${footerLabel}](https://github.com/Smoffyy/LibreChat-Definitive-Fork/releases) • ${localize(
+  const defaultFooter = `${footerLabel} • ${localize(
     'com_ui_latest_footer',
   )}`;
 

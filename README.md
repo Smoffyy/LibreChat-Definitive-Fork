@@ -135,6 +135,13 @@ The only internet access that happens at build time is fetching packages from of
 
 ---
 
+## NPM Installation (Dev)
+
+If you prefer using NPM, or are actively developing it, please refer to the NPMInstallation.md file.
+
+
+
+
 ## Docker Installation
 
 For most people, using Docker Desktop is the easiest way to get LibreChat running.

@@ -179,5 +179,9 @@ hive-mind-prompt-*.txt
 CLAUDE.md
 .gsd
 
+# Meilisearch docker scripts
 !docker/meilisearch/
 !docker/meilisearch/**
+
+# MongoDB
+MongoDB/
