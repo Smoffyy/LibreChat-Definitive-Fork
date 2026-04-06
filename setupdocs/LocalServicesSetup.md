@@ -67,7 +67,7 @@ Around line ~283, you'll see a word `custom:`, right below that is the LM-Studio
     # LM-Studio Example
     - name: 'lm-studio'
       apiKey: 'none' # You can set an API key if you'd like.
-      baseURL: 'http://host.docker.internal:1234/v1' # If you're using docker use this, if not, use the http://127.0.0.1:1234/v1
+      baseURL: 'http://host.docker.internal:1234/v1' # If you're using docker use this, if not, use the http://localhost:1234/v1
       models:
         default: # Update these with whatever model's you're going to be using, this is for hotswapping.
           - 'qwen3.5-9b'
