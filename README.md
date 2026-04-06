@@ -137,7 +137,7 @@ The only internet access that happens at build time is fetching packages from of
 
 ## NPM Installation (Dev)
 
-If you prefer using NPM, or are actively developing it, please refer to the NPMInstallation.md file.
+If you prefer using NPM, or are actively developing it, please refer to the [NPMInstallation.md](https://github.com/Smoffyy/LibreChat-Definitive-Fork/blob/dev/setupdocs/NPMInstallation.md) file.
 
 
 
