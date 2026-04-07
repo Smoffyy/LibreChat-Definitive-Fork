@@ -88,6 +88,13 @@ Finally, head to this link:
 http://localhost:3090
 ```
 
+### Troubleshooting
+If you're having problems with mongoDB, and need to restart it you need to hit `Win + R`and type `services.msc` then do the following:
+
+![alt text](image-15.png)
+
+If it isnt started, make sure to start it, if anything you can restart it entirely.
+
 
 Now you're able to make live edits and code!
 

@@ -24,6 +24,16 @@ const knownEndpointAssets = {
   [KnownEndpoints.shuttleai]: 'assets/shuttleai.png',
   [KnownEndpoints['together.ai']]: 'assets/together.png',
   [KnownEndpoints.unify]: 'assets/unify.webp',
+
+  // Custom Icon's for model named (IK that its not a good fix but it'll work)
+  // e.g.
+  // If you're wanting to trick the name, say theres a period in it you do the following, it must match whatever is in config.ts
+  //[KnownEndpoints['qwen3.5']]: '/assets/qwen3.5-color.svg',
+  //
+  // If theres no period just do the default:
+  //[KnownEndpoints.qwen3]: '/assets/qwen3-color.svg',
+  //[KnownEndpoints['qwen3.5']]: '/assets/qwen3.5-color.svg',
+
 };
 
 const knownEndpointClasses = {

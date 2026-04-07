@@ -1162,6 +1162,16 @@ export enum KnownEndpoints {
   unify = 'unify',
   vercel = 'vercel',
   xai = 'xai',
+
+  // Custom Icon's for model named (IK that its not a good fix but it'll work) edit config.ts and UnknownIcon.tsx
+  // e.g.
+  // If you're wanting to trick the name, say theres a period in it you do the following
+  //'qwen3.5' = 'qwen3.5',
+  //
+  // If theres no period just do the default:
+  //qwen3 = 'qwen3',
+  
+  //'qwen3.5' = 'qwen3.5',
 }
 
 export enum FetchTokenConfig {
