@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2026-04-05 (Static Edited Edition)
 ### Added
+- **Note, this release is more of just making docs instead of actually adding features.**
 - More logos that aren't shipped with the original LibreChat. ✨
 - More examples in yaml and config files.
 - Docs explaining step-by-step on how to install from source, and get backend running. ✨
