@@ -84,6 +84,8 @@ export const FontSelector = ({
   const fontOptions = [
     { value: 'inter', label: localize('com_nav_font_inter') },
     { value: 'source-serif-4', label: localize('com_nav_font_source_serif') },
+    { value: 'open-sans', label: localize('com_nav_font_open_sans') },
+    { value: 'b612', label: localize('com_nav_font_b612') },
   ];
 
   const labelId = 'font-selector-label';

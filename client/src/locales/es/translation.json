@@ -812,5 +812,10 @@
   "com_ui_zoom_in": "Menos Zoom",
   "com_ui_zoom_level": "Nivelar Zoom",
   "com_ui_zoom_out": "Mas Zoom",
-  "com_user_message": "Usted"
+  "com_user_message": "Usted",
+  "com_nav_font_family": "Tipografía",
+  "com_nav_font_inter": "Inter (Por defecto)",
+  "com_nav_font_source_serif": "Serifa de fuente 4",
+  "com_nav_font_open_sans": "Sans abierto",
+  "com_nav_font_b612": "B612"
 }

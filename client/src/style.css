@@ -2993,6 +2993,54 @@ html {
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Open Sans';
+  src: url('/fonts/open-sans/OpenSans-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('/fonts/open-sans/OpenSans-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 300 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'B612';
+  src: url('/fonts/b612/B612-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'B612';
+  src: url('/fonts/b612/B612-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'B612';
+  src: url('/fonts/b612/B612-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'B612';
+  src: url('/fonts/b612/B612-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 html[data-font='inter'],
 html:not([data-font]) {
   font-family: 'Inter', sans-serif;
@@ -3005,4 +3053,22 @@ html[data-font='source-serif-4'] {
 html[data-font='source-serif-4'] body,
 html[data-font='source-serif-4'] .font-sans {
   font-family: 'Source Serif 4', serif !important;
+}
+
+html[data-font='open-sans'] {
+  font-family: 'Open Sans', sans-serif;
+}
+
+html[data-font='open-sans'] body,
+html[data-font='open-sans'] .font-sans {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+html[data-font='b612'] {
+  font-family: 'B612', sans-serif;
+}
+
+html[data-font='b612'] body,
+html[data-font='b612'] .font-sans {
+  font-family: 'B612', sans-serif !important;
 }
