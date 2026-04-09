@@ -1,103 +1,150 @@
 # NPM Installation (Dev)
 
-If you prefer using **NPM** or are actively developing LibreChat, this guide will walk you through building and running the application locally.
+This guide walks through building and running LibreChat locally using NPM, intended for active development.
+
+> **Note:** This guide assumes you have already cloned the repository and completed initial configuration. If not, refer to the standard setup instructions first.
+
+---
 
 ## Prerequisites
 
-Before beginning, ensure your system has the following installed:
+| Requirement | Version | Link |
+|---|---|---|
+| Node.js | `20.19.0+`, `^22.12.0`, or `>= 23.0.0` | [nodejs.org](https://nodejs.org/en/download) |
+| Git | Latest | [git-scm.com](https://git-scm.com/download/) |
+| MongoDB Community Server | Latest | [mongodb.com](https://www.mongodb.com/try/download/community) |
 
-*   **Node.js**: Version `20.19.0+`, `^22.12.0`, or `>= 23.0.0`.
-    *   *Download Link:* [nodejs.org](https://nodejs.org/en/download)
-    *   *Note:* LibreChat relies on the **CommonJS (CJS)** module system and requires these specific Node.js versions for compatibility with `openid-client v6`.
-*   **Git**: For cloning the repository.
-    *   *Download Link:* [git-scm.com](https://git-scm.com/download/)
-*   **MongoDB Community Server**
-    *   *Download Link:* [MongoDB Community Server](https://www.mongodb.com/try/download/community)
-
-> **Note:** This guide assumes you have already cloned the repository and completed your initial configuration steps. If not, please refer to the standard setup instructions before proceeding.
+> **Node.js Note:** LibreChat uses the **CommonJS (CJS)** module system and requires the versions above for compatibility with `openid-client v6`.
 
 ---
 
 ## Step 1: Install and Configure MongoDB
 
-### 1. Launch the Installer
-Run the `MongoDB Community Server` installer you downloaded earlier. When prompted, click **Complete Setup**.
+### 1.1 — Run the Installer
 
-![alt text](image-10.png)
+Run the **MongoDB Community Server** installer. When prompted, select **Complete Setup**.
 
-You will see a window similar to this:
+![MongoDB installer](image-10.png)
 
-![alt text](image-11.png)
+You will see a configuration window:
 
-While you can customize various settings, for a standard development setup, only modify the **Data Directory** and **Log Directory**. Ensure the following options remain selected:
-*   [x] Install MongoDB as a Service
-*   [x] Run service as Network Service user
+![MongoDB configuration](image-11.png)
 
-For my specific setup, I created a folder named `MongoDB` containing subfolders for data and logs. Configure your paths accordingly (see screenshot below):
+For a standard development setup, only modify the **Data Directory** and **Log Directory**. Keep the following options checked:
 
-![alt text](image-12.png)
+- [x] Install MongoDB as a Service
+- [x] Run service as Network Service user
 
-### 2. Add a Connection (GUI Method)
-*Note: This section covers the MongoDB GUI installed by the installer. If you are not using the GUI, please use command-line tools to configure the connection.*
+Example: create a `MongoDB` folder with `data` and `logs` subfolders, then set both paths accordingly:
 
-Click the **Add** icon in the MongoDB Compass or Atlas interface:
+![MongoDB directory config](image-12.png)
 
-![alt text](image-13.png)
+### 1.2 — Add a Connection (GUI)
 
-Once the new connection window opens:
+> Skip this section if you are configuring MongoDB via the command line.
 
-![alt text](image-14.png)
+Click the **Add** icon in MongoDB Compass:
 
-Keep all default settings and click **Save & Connect**.
+![Add connection](image-13.png)
 
-### 3. Verify Service Status
-If you encounter issues with MongoDB, you may need to restart the service manually. Press `Win + R`, type `services.msc`, and ensure the MongoDB service is running:
+In the new connection window, leave all defaults and click **Save & Connect**:
 
-![alt text](image-15.png)
+![Save and connect](image-14.png)
 
-*   If it is stopped, click **Start**.
-*   If anything appears incorrect, you can fully restart the service via this window or by restarting your computer.
+### 1.3 — Verify the Service is Running
+
+If MongoDB fails to connect, check that the service is active. Press `Win + R`, type `services.msc`, and locate the MongoDB service:
+
+![Services window](image-15.png)
+
+- If stopped — click **Start**
+- If issues persist — restart the service or reboot your machine
 
 ---
 
 ## Step 2: Development Setup
 
-Once MongoDB is configured and running, proceed with the development installation in the following order within your terminal:
+With MongoDB running, open your terminal in the LibreChat project root and follow the steps below.
 
-### 1. Clean Install
-Perform a clean install to ensure no previous build artifacts interfere:
+### 2.1 — Install Dependencies
+
 ```bash
-npm ci
+npm run smart-reinstall
 ```
 
-### 2. Build Frontend
-Compile the frontend assets required for the backend to serve them correctly:
+> Alternatively, use `npm ci` for a strict lockfile-based clean install.
+
+### 2.2 — Build the Project
+
 ```bash
-npm run frontend
+npm run build
 ```
 
-### 3. Start Development Servers
-Once the frontend build completes, open **two separate terminals** and execute the following commands in each (one command per terminal):
+### 2.3 — Configure Environment
 
-**Terminal 1:**
+If you don't have a `.env` file yet, copy the example:
+
+```bash
+# Windows
+copy .env.example .env
+
+# macOS/Linux
+cp .env.example .env
+```
+
+Open `.env` and set `MONGO_URI` to point to your MongoDB instance. All other defaults are generally fine.
+
+---
+
+## Step 3: Running for Development
+
+Open **two separate terminals** and run one command in each.
+
+**Terminal 1 — Backend:**
 ```bash
 npm run backend:dev
 ```
 
-**Terminal 2:**
+**Terminal 2 — Frontend:**
 ```bash
 npm run frontend:dev
 ```
 
-### Final Access
-Open your web browser and navigate to:
-```text
+> `backend:dev` and `frontend:dev` both watch for file changes and reload automatically — use these during active development instead of the non-`:dev` variants.
+
+Once both are running, open your browser and go to:
+
+```
 http://localhost:3090
 ```
 
 ---
 
+## NPM Command Reference
+
+| Command | Description |
+|---|---|
+| `npm run smart-reinstall` | Reinstalls only if `package-lock.json` changed |
+| `npm ci` | Full clean install from lockfile |
+| `npm run build` | Builds all packages (Turborepo) |
+| `npm run build:client` | Builds frontend only |
+| `npm run backend` | Runs backend in production mode |
+| `npm run backend:dev` | Runs backend with file watching |
+| `npm run backend:inspect` | Runs backend with Node.js debugger |
+| `npm run frontend:dev` | Runs frontend dev server on port 3090 |
+
+---
+
 ## Troubleshooting
 
-*   **MongoDB Service Issues**: If the service fails to start or stops unexpectedly, use `services.msc` (as detailed in Step 1) to restart it.
-*   **Build Errors**: Ensure your Node.js version matches the requirements listed in the Prerequisites section exactly.
+**MongoDB won't start**
+Open `services.msc`, find the MongoDB service, and click **Start**. If it keeps stopping, check your data/log directory paths from Step 1.
+
+**Build errors**
+Verify your Node.js version matches the requirements in the Prerequisites table. Run `node -v` to check.
+
+**Frontend not reflecting changes**
+Make sure you are using `npm run frontend:dev` and not a static build. The dev server hot-reloads on save.
+
+**Verbose backend logging**
+Set `DEBUG_CONSOLE=true` in your `.env` file for detailed server output.
