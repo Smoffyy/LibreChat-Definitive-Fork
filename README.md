@@ -53,6 +53,8 @@ This project is licensed under the same MIT License as the original LibreChat. B
 
 #### Custom Fonts
 - [Frank Grießhammer](https://fonts.google.com/?query=Frank+Grie%C3%9Fhammer) - Source Serif 4 open-sourced Font.
+- [The Open Sans Project Authors](https://github.com/googlefonts/opensans) - Open Sans open-sourced Font.
+- [The B612 Project Authors](https://github.com/polarsys/b612) - B612 open-sourced Font.
 
 #### Open Source Contributors
 - [LibreChat Contributors](https://github.com/danny-avila/LibreChat/graphs/contributors) – 300+ open-source contributors who helped build and maintain the project
