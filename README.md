@@ -51,6 +51,9 @@ This project is licensed under the same MIT License as the original LibreChat. B
 - [derkoe](https://github.com/derkoe) – Contributor
 - [btribonde](https://github.com/btribonde) – Contributor
 
+#### Custom Fonts
+- [Frank Grießhammer](https://fonts.google.com/?query=Frank+Grie%C3%9Fhammer) - Source Serif 4 open-sourced Font.
+
 #### Open Source Contributors
 - [LibreChat Contributors](https://github.com/danny-avila/LibreChat/graphs/contributors) – 300+ open-source contributors who helped build and maintain the project
 

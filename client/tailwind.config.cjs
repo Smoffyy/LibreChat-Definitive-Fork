@@ -13,6 +13,7 @@ module.exports = {
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
       mono: ['Roboto Mono', 'monospace'],
+      'source-serif': ['"Source Serif 4"', 'serif'],
     },
     // fontFamily: {
     //   sans: ['Söhne', 'sans-serif'],

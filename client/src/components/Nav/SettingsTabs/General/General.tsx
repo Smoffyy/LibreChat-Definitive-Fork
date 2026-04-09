@@ -7,6 +7,8 @@ import ToggleSwitch from '../ToggleSwitch';
 import { useLocalize } from '~/hooks';
 import store from '~/store';
 
+const FONT_STORAGE_KEY = 'librechat-font';
+
 const toggleSwitchConfigs = [
   {
     stateAtom: store.enableUserMsgMarkdown,
@@ -60,6 +62,41 @@ export const ThemeSelector = ({
         options={themeOptions}
         sizeClasses="w-[180px]"
         testId="theme-selector"
+        className="z-50"
+        aria-labelledby={labelId}
+        portal={portal}
+      />
+    </div>
+  );
+};
+
+export const FontSelector = ({
+  font,
+  onChange,
+  portal = true,
+}: {
+  font: string;
+  onChange: (value: string) => void;
+  portal?: boolean;
+}) => {
+  const localize = useLocalize();
+
+  const fontOptions = [
+    { value: 'inter', label: localize('com_nav_font_inter') },
+    { value: 'source-serif-4', label: localize('com_nav_font_source_serif') },
+  ];
+
+  const labelId = 'font-selector-label';
+
+  return (
+    <div className="flex items-center justify-between">
+      <div id={labelId}>{localize('com_nav_font_family')}</div>
+      <Dropdown
+        value={font}
+        onChange={onChange}
+        options={fontOptions}
+        sizeClasses="w-[180px]"
+        testId="font-selector"
         className="z-50"
         aria-labelledby={labelId}
         portal={portal}
@@ -148,12 +185,21 @@ function General() {
 
   const [langcode, setLangcode] = useRecoilState(store.lang);
 
+  const savedFont = localStorage.getItem(FONT_STORAGE_KEY) ?? 'inter';
+  const [font, setFont] = React.useState(savedFont);
+
   const changeTheme = useCallback(
     (value: string) => {
       setTheme(value);
     },
     [setTheme],
   );
+
+  const changeFont = useCallback((value: string) => {
+    localStorage.setItem(FONT_STORAGE_KEY, value);
+    document.documentElement.setAttribute('data-font', value);
+    setFont(value);
+  }, []);
 
   const changeLang = useCallback(
     (value: string) => {
@@ -175,6 +221,9 @@ function General() {
     <div className="flex flex-col gap-3 p-1 text-sm text-text-primary">
       <div className="pb-3">
         <ThemeSelector theme={theme} onChange={changeTheme} />
+      </div>
+      <div className="pb-3">
+        <FontSelector font={font} onChange={changeFont} />
       </div>
       <div className="pb-3">
         <LangSelector langcode={langcode} onChange={changeLang} />
