@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - More logos that aren't shipped with the original LibreChat. ✨
 - More examples in yaml and config files.
 - Docs explaining step-by-step on how to install from source, and get backend running. ✨
+- More **selectable UI Fonts**. ✨
 
 ### Changed
 - Package version naming, changed to `0.8.4-definitive`. Making the packages static.
