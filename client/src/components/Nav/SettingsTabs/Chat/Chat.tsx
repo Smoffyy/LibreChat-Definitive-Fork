@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { showThinkingAtom, liveThinkingPreviewAtom } from '~/store/showThinking';
+import CursorShapeSelector from './CursorShapeSelector';
 import FontSizeSelector from './FontSizeSelector';
 import { ForkSettings } from './ForkSettings';
 import ChatDirection from './ChatDirection';
@@ -119,6 +120,9 @@ function Chat() {
     <div className="flex flex-col gap-3 p-1 text-sm text-text-primary">
       <div className="pb-3">
         <FontSizeSelector />
+      </div>
+      <div className="pb-3">
+        <CursorShapeSelector />
       </div>
       <div className="pb-3">
         <ChatDirection />

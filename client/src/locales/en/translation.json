@@ -1586,5 +1586,10 @@
   "com_nav_font_inter": "Inter (Default)",
   "com_nav_font_source_serif": "Source Serif 4",
   "com_nav_font_open_sans": "Open Sans",
-  "com_nav_font_b612": "B612"
+  "com_nav_font_b612": "B612",
+  "com_nav_cursor_shape": "Cursor Shape",
+  "com_nav_cursor_circle": "Circle (Default)",
+  "com_nav_cursor_square": "Square",
+  "com_nav_cursor_square_blink": "Square (Blink)",
+  "com_nav_cursor_triangle": "Triangle"
 }
