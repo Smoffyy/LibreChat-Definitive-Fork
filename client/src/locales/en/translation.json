@@ -1591,5 +1591,6 @@
   "com_nav_cursor_circle": "Circle (Default)",
   "com_nav_cursor_square": "Square",
   "com_nav_cursor_square_blink": "Square (Blink)",
-  "com_nav_cursor_triangle": "Triangle"
+  "com_nav_cursor_triangle": "Triangle",
+  "com_nav_input_model_selector": "Model Selector in Input Bar"
 }

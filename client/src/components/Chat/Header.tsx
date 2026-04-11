@@ -1,7 +1,9 @@
 import { memo, useMemo } from 'react';
+import { useAtomValue } from 'jotai';
 import { useRecoilValue } from 'recoil';
 import { useMediaQuery } from '@librechat/client';
 import { getConfigDefaults, PermissionTypes, Permissions } from 'librechat-data-provider';
+import { inputModelSelectorAtom } from '~/store/inputModelSelector';
 import ModelSelector from './Menus/Endpoints/ModelSelector';
 import { useGetStartupConfig } from '~/data-provider';
 import ExportAndShareMenu from './ExportAndShareMenu';
@@ -18,6 +20,7 @@ const defaultInterface = getConfigDefaults().interface;
 function Header() {
   const { data: startupConfig } = useGetStartupConfig();
   const navVisible = useRecoilValue(store.sidebarExpanded);
+  const inputModelSelector = useAtomValue(inputModelSelectorAtom);
 
   const interfaceConfig = useMemo(
     () => startupConfig?.interface ?? defaultInterface,
@@ -53,7 +56,7 @@ function Header() {
                 !isSmallScreen ? 'transition-all duration-200 ease-in-out' : '',
               )}
             >
-              <ModelSelector startupConfig={startupConfig} />
+              {!inputModelSelector && <ModelSelector startupConfig={startupConfig} />}
               {interfaceConfig.presets === true && interfaceConfig.modelSelect && <PresetsMenu />}
               {hasAccessToBookmarks === true && <BookmarkMenu />}
               {hasAccessToMultiConvo === true && <AddMultiConvo />}

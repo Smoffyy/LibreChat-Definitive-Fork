@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { showThinkingAtom, liveThinkingPreviewAtom } from '~/store/showThinking';
+import { inputModelSelectorAtom } from '~/store/inputModelSelector';
 import CursorShapeSelector from './CursorShapeSelector';
 import FontSizeSelector from './FontSizeSelector';
 import { ForkSettings } from './ForkSettings';
@@ -49,6 +50,13 @@ const toggleSwitchConfigs = [
     switchId: 'showThinking',
     hoverCardText: undefined,
     key: 'showThinking',
+  },
+  {
+    stateAtom: inputModelSelectorAtom,
+    localizationKey: 'com_nav_input_model_selector' as const,
+    switchId: 'inputModelSelector',
+    hoverCardText: undefined,
+    key: 'inputModelSelector',
   },
   {
     stateAtom: store.autoExpandTools,

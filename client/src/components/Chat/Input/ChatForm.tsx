@@ -1,3 +1,7 @@
+import { useAtomValue } from 'jotai';
+import { inputModelSelectorAtom } from '~/store/inputModelSelector';
+import { useGetStartupConfig } from '~/data-provider';
+import ModelSelector from '~/components/Chat/Menus/Endpoints/ModelSelector';
 import { memo, useRef, useMemo, useEffect, useState, useCallback } from 'react';
 import { useWatch } from 'react-hook-form';
 import { TextareaAutosize } from '@librechat/client';
@@ -216,6 +220,9 @@ const ChatForm = memo(function ChatForm({
 
   const isMoreThanThreeRows = visualRowCount > 3;
 
+  const inputModelSelector = useAtomValue(inputModelSelectorAtom);
+  const { data: startupConfig } = useGetStartupConfig();
+
   const baseClasses = useMemo(
     () =>
       cn(
@@ -363,6 +370,11 @@ const ChatForm = memo(function ChatForm({
                 }
               />
               <div className="mx-auto flex" />
+              {inputModelSelector && (
+                <div className="flex items-center">
+                  <ModelSelector startupConfig={startupConfig} />
+                </div>
+              )}
               {SpeechToText && (
                 <AudioRecorder
                   methods={methods}
