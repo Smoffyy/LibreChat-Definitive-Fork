@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - More **selectable UI Fonts**. ✨
 - **Live Thinking Preview** — toggleable setting that shows a semi-opaque box with the last 5 lines of the AI's reasoning as it streams, with a fade-to-invisible gradient at the bottom and a collapse animation when reasoning ends. ✨
 - **Streaming Cursor Shape Selector** — dropdown in Chat settings to choose between Circle (default), Square, Square (Blinking), and Triangle cursor shapes shown while the AI is generating a response. ✨
+- **Model Selector in Input Bar Option** - setting to move the endpoints/models into the input box. ✨
 
 ### Changed
 - Package version naming, changed to `0.8.4-definitive`. Making the packages static.
