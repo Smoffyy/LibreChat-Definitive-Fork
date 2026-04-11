@@ -2068,6 +2068,186 @@ html {
   will-change: transform;
 }
 
+.submitting .result-thinking-square:empty:last-child:after {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-animation: pulseSize 1.25s ease-in-out infinite;
+  animation: pulseSize 1.25s ease-in-out infinite;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background-color: #0d0d0d;
+  background-color: var(--text-primary);
+  border-radius: 0;
+  box-sizing: border-box;
+  content: ' ';
+  display: block;
+  height: 14px;
+  position: absolute;
+  top: -11px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  width: 8px;
+  will-change: transform;
+}
+
+.submitting .result-thinking-square-blink:empty:last-child:after {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-animation: blinkBlock 1s step-end infinite;
+  animation: blinkBlock 1s step-end infinite;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background-color: #0d0d0d;
+  background-color: var(--text-primary);
+  border-radius: 0;
+  box-sizing: border-box;
+  content: ' ';
+  display: block;
+  height: 14px;
+  position: absolute;
+  top: -11px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  width: 8px;
+  will-change: opacity;
+}
+
+.submitting .result-thinking-triangle:empty:last-child:after {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-animation: pulseSize 1.25s ease-in-out infinite;
+  animation: pulseSize 1.25s ease-in-out infinite;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background-color: transparent;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 11px solid #0d0d0d;
+  border-left-color: var(--text-primary);
+  box-sizing: border-box;
+  content: ' ';
+  display: block;
+  height: 0;
+  position: absolute;
+  top: -9px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  width: 0;
+  will-change: transform;
+}
+
+@keyframes blinkBlock {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+@-webkit-keyframes blinkBlock {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.result-streaming-square > :not(ol):not(ul):not(pre):last-child:after,
+.result-streaming-square > pre:last-child code:after {
+  display: inline-block;
+  content: '▋';
+  font-family: system-ui, Inter, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  line-height: normal;
+  margin-left: 0.25rem;
+  vertical-align: middle;
+  font-size: 0.75rem;
+}
+
+.result-streaming-square-blink > :not(ol):not(ul):not(pre):last-child:after,
+.result-streaming-square-blink > pre:last-child code:after {
+  display: inline-block;
+  content: '▋';
+  font-family: system-ui, Inter, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  line-height: normal;
+  margin-left: 0.25rem;
+  vertical-align: middle;
+  font-size: 0.75rem;
+  -webkit-animation: blinkBlock 1s step-end infinite;
+  animation: blinkBlock 1s step-end infinite;
+}
+
+.result-streaming-triangle > :not(ol):not(ul):not(pre):last-child:after,
+.result-streaming-triangle > pre:last-child code:after {
+  display: inline-block;
+  content: '▶';
+  font-family: system-ui, Inter, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  line-height: normal;
+  margin-left: 0.25rem;
+  vertical-align: middle;
+  font-size: 0.55rem;
+}
+
+@supports (selector(:has(*))) {
+  .result-streaming-square > :is(ul, ol):last-child > li:last-child:not(:has(> :is(ul, ol, pre))):after {
+    display: inline-block;
+    content: '▋';
+    font-family: system-ui, Inter, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    line-height: normal;
+    margin-left: 0.25rem;
+    vertical-align: middle;
+    font-size: 0.75rem;
+  }
+  .result-streaming-square-blink > :is(ul, ol):last-child > li:last-child:not(:has(> :is(ul, ol, pre))):after {
+    display: inline-block;
+    content: '▋';
+    font-family: system-ui, Inter, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    line-height: normal;
+    margin-left: 0.25rem;
+    vertical-align: middle;
+    font-size: 0.75rem;
+    -webkit-animation: blinkBlock 1s step-end infinite;
+    animation: blinkBlock 1s step-end infinite;
+  }
+  .result-streaming-triangle > :is(ul, ol):last-child > li:last-child:not(:has(> :is(ul, ol, pre))):after {
+    display: inline-block;
+    content: '▶';
+    font-family: system-ui, Inter, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    line-height: normal;
+    margin-left: 0.25rem;
+    vertical-align: middle;
+    font-size: 0.55rem;
+  }
+}
+
+@supports not (selector(:has(*))) {
+  .result-streaming-square > ol:last-child > li:last-child:after,
+  .result-streaming-square > ul:last-child > li:last-child:after {
+    display: inline-block;
+    content: '▋';
+    font-family: system-ui, Inter, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    line-height: normal;
+    margin-left: 0.25rem;
+    vertical-align: middle;
+    font-size: 0.75rem;
+  }
+  .result-streaming-square-blink > ol:last-child > li:last-child:after,
+  .result-streaming-square-blink > ul:last-child > li:last-child:after {
+    display: inline-block;
+    content: '▋';
+    font-family: system-ui, Inter, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    line-height: normal;
+    margin-left: 0.25rem;
+    vertical-align: middle;
+    font-size: 0.75rem;
+    -webkit-animation: blinkBlock 1s step-end infinite;
+    animation: blinkBlock 1s step-end infinite;
+  }
+  .result-streaming-triangle > ol:last-child > li:last-child:after,
+  .result-streaming-triangle > ul:last-child > li:last-child:after {
+    display: inline-block;
+    content: '▶';
+    font-family: system-ui, Inter, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    line-height: normal;
+    margin-left: 0.25rem;
+    vertical-align: middle;
+    font-size: 0.55rem;
+  }
+}
+
 .shadow-stroke {
   position: relative;
 }
