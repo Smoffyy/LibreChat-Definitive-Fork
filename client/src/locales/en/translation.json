@@ -586,6 +586,7 @@
   "com_nav_settings": "Settings",
   "com_nav_shared_links": "Shared links",
   "com_nav_show_thinking": "Open Thinking Dropdowns by Default",
+  "com_nav_live_thinking_preview": "Live Thinking Preview",
   "com_nav_slash_command": "/-Command",
   "com_nav_slash_command_description": "Toggle command \"/\" for selecting a prompt via keyboard",
   "com_nav_speech_to_text": "Speech to Text",
