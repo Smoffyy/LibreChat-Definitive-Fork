@@ -64,10 +64,12 @@ const MessageIcon = memo(({ iconData, assistant, agent }: MessageIconProps) => {
     [endpointsConfig, endpoint],
   );
 
-  if (iconData?.isCreatedByUser !== true && iconURL != null && iconURL.includes('http')) {
+  const resolvedIconURL = iconURL ?? (endpointIconURL?.includes('http') ? endpointIconURL : null);
+
+  if (iconData?.isCreatedByUser !== true && resolvedIconURL != null && resolvedIconURL.includes('http')) {
     return (
       <ConvoIconURL
-        iconURL={iconURL}
+        iconURL={resolvedIconURL}
         modelLabel={iconData?.modelLabel}
         context="message"
         assistantAvatar={assistantAvatar}

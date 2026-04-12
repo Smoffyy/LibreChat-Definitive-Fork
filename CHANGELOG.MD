@@ -31,3 +31,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - If an uploads file type is unknown, treat it as plain text instead of erroring out. ✨
+- Model icon reverts to default robot icon when user stops generation mid-stream. The server never returns `iconURL` on its abort response, so it is now restored from the original request snapshot in `finalHandler`. ✨
