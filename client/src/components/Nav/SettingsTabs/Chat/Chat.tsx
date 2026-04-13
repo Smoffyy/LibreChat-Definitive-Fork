@@ -52,6 +52,13 @@ const toggleSwitchConfigs = [
     key: 'showThinking',
   },
   {
+    stateAtom: liveThinkingPreviewAtom,
+    localizationKey: 'com_nav_live_thinking_preview' as const,
+    switchId: 'liveThinkingPreview',
+    hoverCardText: undefined,
+    key: 'liveThinkingPreview',
+  },
+  {
     stateAtom: inputModelSelectorAtom,
     localizationKey: 'com_nav_input_model_selector' as const,
     switchId: 'inputModelSelector',
@@ -113,13 +120,6 @@ const toggleSwitchConfigs = [
     switchId: 'showThinking',
     hoverCardText: undefined,
     key: 'showThinking',
-  },
-  {
-    stateAtom: liveThinkingPreviewAtom,
-    localizationKey: 'com_nav_live_thinking_preview' as const,
-    switchId: 'liveThinkingPreview',
-    hoverCardText: undefined,
-    key: 'liveThinkingPreview',
   },
 ];
 
