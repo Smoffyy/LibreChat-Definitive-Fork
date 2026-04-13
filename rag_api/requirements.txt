@@ -31,7 +31,7 @@ langchain-mongodb==0.11.0
 langchain-ollama==1.0.1
 langchain-huggingface==1.2.0
 langchain-google-genai==4.2.0
-cryptography==46.0.5
+cryptography==46.0.7
 python-magic==0.4.27
 python-pptx==1.0.2
 xlrd==2.0.2
