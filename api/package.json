@@ -39,11 +39,11 @@
     "@aws-sdk/client-s3": "^3.980.0",
     "@aws-sdk/s3-request-presigner": "^3.758.0",
     "@azure/identity": "^4.7.0",
-    "@azure/search-documents": "^12.0.0",
+    "@azure/search-documents": "^12.2.0",
     "@azure/storage-blob": "^12.30.0",
-    "@google/genai": "^1.19.0",
+    "@google/genai": "^1.49.0",
     "@keyv/redis": "^4.3.3",
-    "@langchain/core": "^0.3.80",
+    "@langchain/core": "^1.1.39",
     "@librechat/agents": "^3.1.63",
     "@librechat/api": "*",
     "@librechat/data-schemas": "*",
@@ -52,7 +52,7 @@
     "@node-saml/passport-saml": "^5.1.0",
     "@smithy/node-http-handler": "^4.4.5",
     "ai-tokenizer": "^1.0.6",
-    "axios": "1.13.6",
+    "axios": "1.15.0",
     "bcryptjs": "^2.4.3",
     "compression": "^1.8.1",
     "connect-redis": "^8.1.0",
@@ -119,7 +119,7 @@
   "devDependencies": {
     "jest": "^30.2.0",
     "mongodb-memory-server": "^11.0.1",
-    "nodemon": "^3.0.3",
+    "nodemon": "^3.1.14",
     "supertest": "^7.1.0"
   }
 }
