@@ -155,7 +155,7 @@ The only internet access that happens at build time is fetching packages from of
 
 ## NPM Installation (Dev)
 
-If you prefer using NPM, or are actively developing it, please refer to the [NPMInstallation.md](local-docs\NPMInstallation.md) file.
+If you prefer using NPM, or are actively developing it, please refer to the [NPMInstallation.md](local-docs/NPMInstallation.md) file.
 
 ## Docker Installation
 

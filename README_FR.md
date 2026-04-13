@@ -147,7 +147,7 @@ La seule connexion internet qui se produit pendant la compilation est le téléc
 
 ## Installation NPM (Développement)
 
-Si vous préférez utiliser NPM, ou si vous le développez activement, veuillez consulter le fichier [NPMInstallation.md](local-docs\NPMInstallation.md).
+Si vous préférez utiliser NPM, ou si vous le développez activement, veuillez consulter le fichier [NPMInstallation.md](local-docs/NPMInstallation.md).
 
 ## Installation Docker
 
