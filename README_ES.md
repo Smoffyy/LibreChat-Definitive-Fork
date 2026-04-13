@@ -6,7 +6,7 @@ Un fork de [LibreChat v0.8.4](https://github.com/danny-avila/LibreChat/releases/
   <img src="logo.svg" alt="LibreChat Logo Original" width="200"/>
 </p>
 
-Si deseas la versión original, **no modificada** de LibreChat v0.8.4, echa un vistazo a la rama [LibreChat-0.8.4-base](https://github.com/Smoffyy/LibreChat-Static/tree/librechat-0.8.4-base).
+Si deseas la versión original, **no modificada** de LibreChat v0.8.4, echa un vistazo a la rama [LibreChat-0.8.4-base](https://github.com/Smoffyy/LibreChat-Definitive-Fork/tree/librechat-0.8.4-base).
 
 Este proyecto está licenciado bajo la misma Licencia MIT que el LibreChat original. Al descargar, utilizar o modificar este proyecto, aceptas los términos de la [licencia original](https://github.com/Smoffyy/LibreChat-Static/blob/librechat-0.8.4-base/LICENSE) de la versión v0.8.4.
 
