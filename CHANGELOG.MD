@@ -4,7 +4,7 @@ All notable changes will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2026-04-05 — Static Edited Edition
+## [1.0.0] - 2026-04-12 — The Definitive v0.8.4 Edition
 
 > This release focuses on quality-of-life features, self-hosting improvements, and proper documentation.
 > **All changes are opt-in and non-breaking unless noted.**
