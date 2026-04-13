@@ -1259,5 +1259,10 @@
   "com_ui_zoom_in": "Zoomer",
   "com_ui_zoom_level": "Niveau de zoom",
   "com_ui_zoom_out": "Dézoomer",
-  "com_user_message": "Vous"
+  "com_user_message": "Vous",
+  "com_nav_font_family": "Police de caractères",
+  "com_nav_font_inter": "Inter (Par défaut)",
+  "com_nav_font_source_serif": "Serif Source 4",
+  "com_nav_font_open_sans": "SANS Open",
+  "com_nav_font_b612": "B612"
 }

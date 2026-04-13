@@ -257,12 +257,10 @@ export const validateFiles = ({
 
   for (let i = 0; i < fileList.length; i++) {
     let originalFile = fileList[i];
-    const fileType = inferMimeType(originalFile.name, originalFile.type);
+    let fileType = inferMimeType(originalFile.name, originalFile.type);
 
-    // Check if the file type is still empty after the extension check
     if (!fileType) {
-      setError('Unable to determine file type for: ' + originalFile.name);
-      return false;
+      fileType = 'text/plain';
     }
 
     // Replace empty type with inferred type

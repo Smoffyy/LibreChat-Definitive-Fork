@@ -1,8 +1,10 @@
 import { memo, useMemo, ReactElement } from 'react';
 import { useRecoilValue } from 'recoil';
+import { useAtomValue } from 'jotai';
 import MarkdownLite from '~/components/Chat/Messages/Content/MarkdownLite';
 import Markdown from '~/components/Chat/Messages/Content/Markdown';
 import { useMessageContext } from '~/Providers';
+import { cursorShapeAtom } from '~/store/cursorShape';
 import { cn } from '~/utils';
 import store from '~/store';
 
@@ -20,7 +22,15 @@ type ContentType =
 const TextPart = memo(function TextPart({ text, isCreatedByUser, showCursor }: TextPartProps) {
   const { isSubmitting = false, isLatestMessage = false } = useMessageContext();
   const enableUserMsgMarkdown = useRecoilValue(store.enableUserMsgMarkdown);
+  const cursorShape = useAtomValue(cursorShapeAtom);
   const showCursorState = useMemo(() => showCursor && isSubmitting, [showCursor, isSubmitting]);
+
+  const streamingClass = useMemo(() => {
+    if (!showCursorState || !text.length) {
+      return '';
+    }
+    return cursorShape === 'circle' ? 'result-streaming' : `result-streaming-${cursorShape}`;
+  }, [showCursorState, text.length, cursorShape]);
 
   const content: ContentType = useMemo(() => {
     if (!isCreatedByUser) {
@@ -36,7 +46,7 @@ const TextPart = memo(function TextPart({ text, isCreatedByUser, showCursor }: T
     <div
       className={cn(
         isSubmitting ? 'submitting' : '',
-        showCursorState && !!text.length ? 'result-streaming' : '',
+        streamingClass,
         'markdown prose message-content dark:prose-invert light w-full break-words',
         isCreatedByUser && !enableUserMsgMarkdown && 'whitespace-pre-wrap',
         isCreatedByUser ? 'dark:text-gray-20' : 'dark:text-gray-100',

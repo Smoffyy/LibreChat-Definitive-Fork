@@ -1,5 +1,7 @@
 import { memo } from 'react';
-import { showThinkingAtom } from '~/store/showThinking';
+import { showThinkingAtom, liveThinkingPreviewAtom } from '~/store/showThinking';
+import { inputModelSelectorAtom } from '~/store/inputModelSelector';
+import CursorShapeSelector from './CursorShapeSelector';
 import FontSizeSelector from './FontSizeSelector';
 import { ForkSettings } from './ForkSettings';
 import ChatDirection from './ChatDirection';
@@ -50,6 +52,13 @@ const toggleSwitchConfigs = [
     key: 'showThinking',
   },
   {
+    stateAtom: inputModelSelectorAtom,
+    localizationKey: 'com_nav_input_model_selector' as const,
+    switchId: 'inputModelSelector',
+    hoverCardText: undefined,
+    key: 'inputModelSelector',
+  },
+  {
     stateAtom: store.autoExpandTools,
     localizationKey: 'com_nav_auto_expand_tools' as const,
     switchId: 'autoExpandTools',
@@ -98,6 +107,20 @@ const toggleSwitchConfigs = [
     hoverCardText: 'com_nav_info_default_temporary_chat' as const,
     key: 'defaultTemporaryChat',
   },
+  {
+    stateAtom: showThinkingAtom,
+    localizationKey: 'com_nav_show_thinking' as const,
+    switchId: 'showThinking',
+    hoverCardText: undefined,
+    key: 'showThinking',
+  },
+  {
+    stateAtom: liveThinkingPreviewAtom,
+    localizationKey: 'com_nav_live_thinking_preview' as const,
+    switchId: 'liveThinkingPreview',
+    hoverCardText: undefined,
+    key: 'liveThinkingPreview',
+  },
 ];
 
 function Chat() {
@@ -105,6 +128,9 @@ function Chat() {
     <div className="flex flex-col gap-3 p-1 text-sm text-text-primary">
       <div className="pb-3">
         <FontSizeSelector />
+      </div>
+      <div className="pb-3">
+        <CursorShapeSelector />
       </div>
       <div className="pb-3">
         <ChatDirection />

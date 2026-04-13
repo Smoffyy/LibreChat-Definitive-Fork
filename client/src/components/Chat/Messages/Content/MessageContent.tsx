@@ -1,9 +1,12 @@
 import { memo, Suspense, useMemo } from 'react';
+import { useAtomValue } from 'jotai';
 import { useRecoilValue } from 'recoil';
 import { DelayedRender } from '@librechat/client';
 import type { TMessage } from 'librechat-data-provider';
 import type { TMessageContentProps, TDisplayProps } from '~/common';
 import Error from '~/components/Messages/Content/Error';
+import { liveThinkingPreviewAtom } from '~/store/showThinking';
+import { cursorShapeAtom } from '~/store/cursorShape';
 import { useMessageContext } from '~/Providers';
 import MarkdownLite from './MarkdownLite';
 import EditMessage from './EditMessage';
@@ -19,10 +22,26 @@ const DELAYED_ERROR_TIMEOUT = 5500;
 const UNFINISHED_DELAY = 250;
 
 const parseThinkingContent = (text: string) => {
-  const thinkingMatch = text.match(/:::thinking([\s\S]*?):::/);
+  const closedMatch = text.match(/:::thinking([\s\S]*?):::/);
+  if (closedMatch) {
+    return {
+      thinkingContent: closedMatch[1].trim(),
+      regularContent: text.replace(/:::thinking[\s\S]*?:::/, '').trim(),
+      activeThinking: '',
+    };
+  }
+  const openMatch = text.match(/:::thinking([\s\S]*)/);
+  if (openMatch) {
+    return {
+      thinkingContent: '',
+      regularContent: '',
+      activeThinking: openMatch[1],
+    };
+  }
   return {
-    thinkingContent: thinkingMatch ? thinkingMatch[1].trim() : '',
-    regularContent: thinkingMatch ? text.replace(/:::thinking[\s\S]*?:::/, '').trim() : text,
+    thinkingContent: '',
+    regularContent: text,
+    activeThinking: '',
   };
 };
 
@@ -94,6 +113,7 @@ export const ErrorMessage = ({
 const DisplayMessage = ({ text, isCreatedByUser, message, showCursor }: TDisplayProps) => {
   const { isSubmitting = false, isLatestMessage = false } = useMessageContext();
   const enableUserMsgMarkdown = useRecoilValue(store.enableUserMsgMarkdown);
+  const cursorShape = useAtomValue(cursorShapeAtom);
 
   const showCursorState = useMemo(
     () => showCursor === true && isSubmitting,
@@ -116,7 +136,7 @@ const DisplayMessage = ({ text, isCreatedByUser, message, showCursor }: TDisplay
         className={cn(
           'markdown prose message-content dark:prose-invert light w-full break-words',
           isSubmitting && 'submitting',
-          showCursorState && text.length > 0 && 'result-streaming',
+          showCursorState && text.length > 0 && (cursorShape === 'circle' ? 'result-streaming' : `result-streaming-${cursorShape}`),
           isCreatedByUser && !enableUserMsgMarkdown && 'whitespace-pre-wrap',
           isCreatedByUser ? 'dark:text-gray-20' : 'dark:text-gray-100',
         )}
@@ -134,6 +154,33 @@ export const UnfinishedMessage = ({ message }: { message: TMessage }) => (
   />
 );
 
+const LiveThinkingPreview = ({ content }: { content: string }) => {
+  const livePreview = useAtomValue(liveThinkingPreviewAtom);
+  if (!livePreview) {
+    return null;
+  }
+
+  const lines = content
+    .split('\n')
+    .map((l) => l.trim())
+    .filter(Boolean)
+    .slice(-3);
+
+  return (
+    <div className="mb-4 rounded-lg border border-border-light bg-surface-secondary/60 p-3 backdrop-blur-sm">
+      <div className="mb-2 flex items-center gap-1.5">
+        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-text-secondary" aria-hidden="true" />
+        <span className="text-xs text-text-secondary">Thinking...</span>
+      </div>
+      <div className="space-y-0.5 text-sm text-text-secondary opacity-70" aria-live="polite" aria-label="AI is thinking">
+        {lines.map((line, i) => (
+          <p key={i} className="truncate leading-5">{line}</p>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const MessageContent = ({
   text,
   edit,
@@ -146,7 +193,11 @@ const MessageContent = ({
   const { message } = props;
   const { messageId } = message;
 
-  const { thinkingContent, regularContent } = useMemo(() => parseThinkingContent(text), [text]);
+  const { thinkingContent, regularContent, activeThinking } = useMemo(
+    () => parseThinkingContent(text),
+    [text],
+  );
+  const isActiveThinking = isLast && isSubmitting && activeThinking.length > 0;
   const showRegularCursor = useMemo(() => isLast && isSubmitting, [isLast, isSubmitting]);
 
   const unfinishedMessage = useMemo(
@@ -171,15 +222,18 @@ const MessageContent = ({
 
   return (
     <>
+      {isActiveThinking && <LiveThinkingPreview content={activeThinking} />}
       {thinkingContent.length > 0 && (
         <Thinking key={`thinking-${messageId}`}>{thinkingContent}</Thinking>
       )}
-      <DisplayMessage
-        key={`display-${messageId}`}
-        showCursor={showRegularCursor}
-        text={regularContent}
-        {...props}
-      />
+      {!isActiveThinking && (
+        <DisplayMessage
+          key={`display-${messageId}`}
+          showCursor={showRegularCursor}
+          text={regularContent}
+          {...props}
+        />
+      )}
       {unfinishedMessage}
     </>
   );

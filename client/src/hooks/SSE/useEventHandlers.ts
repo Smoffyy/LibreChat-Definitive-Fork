@@ -430,7 +430,13 @@ export default function useEventHandlers({
 
   const finalHandler = useCallback(
     (data: TFinalResData, submission: EventSubmission) => {
-      const { requestMessage, responseMessage, conversation, runMessages } = data;
+      const { requestMessage, conversation, runMessages } = data;
+      const responseMessage = data.responseMessage
+        ? {
+            ...data.responseMessage,
+            iconURL: data.responseMessage.iconURL ?? submission.initialResponse?.iconURL,
+          }
+        : data.responseMessage;
       const {
         messages,
         conversation: submissionConvo,
@@ -745,6 +751,10 @@ export default function useEventHandlers({
         const responseMessage = {
           ..._responseMessage,
           content: _responseMessage.content?.filter((part) => part != null),
+          iconURL:
+            _responseMessage.iconURL ??
+            submission.initialResponse?.iconURL ??
+            (submission.conversation as TConversation)?.iconURL,
         };
         try {
           finalHandler(

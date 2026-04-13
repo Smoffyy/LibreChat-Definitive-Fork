@@ -4,7 +4,7 @@ import { ContentTypes } from 'librechat-data-provider';
 import type { MouseEvent, FocusEvent } from 'react';
 import { ThinkingContent, ThinkingButton, FloatingThinkingBar } from './Thinking';
 import { useLocalize, useExpandCollapse } from '~/hooks';
-import { showThinkingAtom } from '~/store/showThinking';
+import { showThinkingAtom, liveThinkingPreviewAtom } from '~/store/showThinking';
 import { useMessageContext } from '~/Providers';
 import { cn } from '~/utils';
 
@@ -39,6 +39,7 @@ const Reasoning = memo(({ reasoning, isLast }: ReasoningProps) => {
   const contentId = useId();
   const localize = useLocalize();
   const showThinking = useAtomValue(showThinkingAtom);
+  const livePreview = useAtomValue(liveThinkingPreviewAtom);
   const [isExpanded, setIsExpanded] = useState(showThinking);
   const [isBarVisible, setIsBarVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -79,12 +80,26 @@ const Reasoning = memo(({ reasoning, isLast }: ReasoningProps) => {
   }, []);
 
   const effectiveIsSubmitting = isLatestMessage ? isSubmitting : false;
+  const isActivelyThinking = effectiveIsSubmitting && isLast;
 
   const label = useMemo(
     () =>
-      effectiveIsSubmitting && isLast ? localize('com_ui_thinking') : localize('com_ui_thoughts'),
-    [effectiveIsSubmitting, localize, isLast],
+      isActivelyThinking ? localize('com_ui_thinking') : localize('com_ui_thoughts'),
+    [isActivelyThinking, localize],
   );
+
+  const showPreview = isActivelyThinking && livePreview && !isExpanded;
+
+  const previewLines = useMemo(() => {
+    if (!showPreview) {
+      return null;
+    }
+    return reasoningText
+      .split('\n')
+      .map((l) => l.trim())
+      .filter(Boolean)
+      .slice(-5);
+  }, [showPreview, reasoningText]);
 
   if (!reasoningText) {
     return null;
@@ -108,6 +123,25 @@ const Reasoning = memo(({ reasoning, isLast }: ReasoningProps) => {
             content={reasoningText}
             contentId={contentId}
           />
+        </div>
+        <div
+          className={cn(
+            'overflow-hidden transition-all duration-500 ease-in-out',
+            showPreview && previewLines?.length ? 'mb-3 max-h-48 opacity-100' : 'max-h-0 opacity-0',
+          )}
+        >
+          <div className="relative rounded-lg border border-border-light bg-surface-secondary/60 p-3 backdrop-blur-sm">
+            <div
+              className="space-y-0.5 text-sm text-text-secondary opacity-70"
+              aria-live="polite"
+              aria-label={localize('com_ui_thinking')}
+            >
+              {(previewLines ?? []).map((line, i) => (
+                <p key={i} className="truncate leading-5">{line}</p>
+              ))}
+            </div>
+            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-9 rounded-b-lg bg-gradient-to-t from-surface-secondary to-transparent" />
+          </div>
         </div>
         <div
           id={contentId}

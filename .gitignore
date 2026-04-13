@@ -81,6 +81,7 @@ librechat.yml
 my.secrets
 !**/.env.example
 !**/.env.test.example
+!**.env.example_old
 cache.json
 api/data/
 owner.yml
@@ -178,3 +179,13 @@ claude-flow
 hive-mind-prompt-*.txt
 CLAUDE.md
 .gsd
+
+# Meilisearch docker scripts
+!docker/meilisearch/
+!docker/meilisearch/**
+
+# MongoDB
+MongoDB/
+mongoDB/
+mongodb/
+mongo_db/

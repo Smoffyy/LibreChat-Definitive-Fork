@@ -24,14 +24,18 @@ function Footer({ className }: { className?: string }) {
     </a>
   );
 
-  const mainContentParts = (
-    typeof config?.customFooter === 'string'
+  const footerLabel = `LibreChat (v0.8.4) • **Definitive v${Constants.VERSION}**`;
+
+  const defaultFooter = `${footerLabel} • ${localize(
+    'com_ui_latest_footer',
+  )}`;
+
+  const footerText =
+    typeof config?.customFooter === 'string' && config.customFooter.trim()
       ? config.customFooter
-      : '[LibreChat ' +
-        Constants.VERSION +
-        '](https://librechat.ai) - ' +
-        localize('com_ui_latest_footer')
-  ).split('|');
+      : defaultFooter;
+
+  const mainContentParts = footerText.split('|');
 
   useEffect(() => {
     if (config?.analyticsGtmId != null && typeof window.google_tag_manager === 'undefined') {

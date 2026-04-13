@@ -1162,6 +1162,16 @@ export enum KnownEndpoints {
   unify = 'unify',
   vercel = 'vercel',
   xai = 'xai',
+
+  // Custom Icon's for model named (IK that its not a good fix but it'll work) edit config.ts and UnknownIcon.tsx
+  // e.g.
+  // If you're wanting to trick the name, say theres a period in it you do the following
+  //'qwen3.5' = 'qwen3.5',
+  //
+  // If theres no period just do the default:
+  //qwen3 = 'qwen3',
+  
+  //'qwen3.5' = 'qwen3.5',
 }
 
 export enum FetchTokenConfig {
@@ -1840,7 +1850,7 @@ export enum TTSProviders {
 /** Enum for app-wide constants */
 export enum Constants {
   /** Key for the app's version. */
-  VERSION = 'v0.8.4',
+  VERSION = '1.0.0',
   /** Key for the Custom Config's version (librechat.yaml). */
   CONFIG_VERSION = '1.3.7',
   /** Standard value for the first message's `parentMessageId` value, to indicate no parent exists. */

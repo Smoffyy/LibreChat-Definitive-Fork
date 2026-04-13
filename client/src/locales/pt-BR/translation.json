@@ -971,5 +971,10 @@
   "com_ui_x_selected": "{{0}} selecionado",
   "com_ui_yes": "Sim",
   "com_ui_zoom": "Zoom",
-  "com_user_message": "Você"
+  "com_user_message": "Você",
+  "com_nav_font_family": "Fonte",
+  "com_nav_font_inter": "Inter (Padrão)",
+  "com_nav_font_source_serif": "Fonte Serifa 4",
+  "com_nav_font_open_sans": "Sem aberturas Aberto",
+  "com_nav_font_b612": "B612"
 }

@@ -131,7 +131,7 @@ const MessageRender = memo(function MessageRender({
     () => ({
       endpoint: msg?.endpoint ?? conversation?.endpoint,
       model: msg?.model ?? conversation?.model,
-      iconURL: msg?.iconURL,
+      iconURL: msg?.iconURL ?? conversation?.iconURL,
       modelLabel: messageLabel,
       isCreatedByUser: msg?.isCreatedByUser,
     }),
@@ -139,6 +139,7 @@ const MessageRender = memo(function MessageRender({
       messageLabel,
       conversation?.endpoint,
       conversation?.model,
+      conversation?.iconURL,
       msg?.model,
       msg?.iconURL,
       msg?.endpoint,
