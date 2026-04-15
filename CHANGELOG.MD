@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.2] - 2026-04-13 — The Definitive v0.8.4 Edition
 
+### 🔧 Changed
+- Patch dependency updates across all workspaces (`api`, `client`, `packages/*`).
+
 ### 🐛 Fixed
 - Unknown or unsupported file types no longer error out on upload. Non-binary files are now treated as plain text, with `.txt` appended to the original filename (e.g. `test.hx` → `test.hx.txt`) so the AI retains context of the original format. Binary files (image, audio, video) that are unsupported by the active endpoint are still rejected as before.
 
