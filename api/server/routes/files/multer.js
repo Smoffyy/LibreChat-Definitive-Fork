@@ -75,7 +75,7 @@ const createFileFilter = (customFileConfig) => {
       }
 
       file.mimetype = 'text/plain';
-      file.originalname = file.originalname.replace(/\.[^.]+$/, '.txt');
+      //file.originalname = file.originalname.replace(/\.[^.]+$/, '.txt');
     }
 
     cb(null, true);

@@ -257,15 +257,12 @@ export const validateFiles = ({
 
   for (let i = 0; i < fileList.length; i++) {
     let originalFile = fileList[i];
-    let fileType = inferMimeType(originalFile.name, originalFile.type);
+    const fileType = inferMimeType(originalFile.name, originalFile.type);
+    const resolvedType = fileType || 'text/plain';
 
-    if (!fileType) {
-      fileType = 'text/plain';
-    }
-
-    // Replace empty type with inferred type
-    if (originalFile.type !== fileType) {
-      const newFile = new File([originalFile], originalFile.name, { type: fileType });
+    // Replace empty or inferred type
+    if (originalFile.type !== resolvedType) {
+      const newFile = new File([originalFile], originalFile.name, { type: resolvedType });
       originalFile = newFile;
       fileList[i] = newFile;
     }
@@ -280,8 +277,19 @@ export const validateFiles = ({
     }
 
     if (!checkType(originalFile.type, mimeTypesToCheck)) {
-      setError(`Unsupported file type: ${originalFile.type}`);
-      return false;
+      const isBinary =
+        originalFile.type.startsWith('image/') ||
+        originalFile.type.startsWith('audio/') ||
+        originalFile.type.startsWith('video/');
+
+      if (isBinary) {
+        setError(`Unsupported file type: ${originalFile.type}`);
+        return false;
+      }
+
+      const plainFile = new File([originalFile], originalFile.name, { type: 'text/plain' });
+      originalFile = plainFile;
+      fileList[i] = plainFile;
     }
 
     if (fileSizeLimit && originalFile.size >= fileSizeLimit) {
