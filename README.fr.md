@@ -1,6 +1,6 @@
 # LibreChat Fork Définitif — L'Édition Définitive v0.8.4
 
-Un fork de [LibreChat v0.8.4](https://github.com/danny-avila/LibreChat/releases/tag/v0.8.4) créé pour *geler* cette version, préservant sa fonctionnalité centrale tout en introduisant des améliorations minimales telles que les améliorations de Qualité de Vie et en assurant que tout soit local et autonome.
+Un fork de [LibreChat v0.8.4](https://github.com/danny-avila/LibreChat/tree/v0.8.4) créé pour *geler* cette version, préservant sa fonctionnalité centrale tout en introduisant des améliorations minimales telles que les améliorations de Qualité de Vie et en assurant que tout soit local et autonome.
 
 <p align="center">
   <img src="logo.svg" alt="Logo LibreChat Original" width="200"/>

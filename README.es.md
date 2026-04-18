@@ -1,6 +1,6 @@
 # LibreChat Fork Definitivo — La Edición Definitiva v0.8.4
 
-Un fork de [LibreChat v0.8.4](https://github.com/danny-avila/LibreChat/releases/tag/v0.8.4) creado para *congelar* esta versión, preservando su funcionalidad central mientras introduce mejoras mínimas como mejoras de Calidad de Vida y asegurando que todo sea local y autocontenido.
+Un fork de [LibreChat v0.8.4](https://github.com/danny-avila/LibreChat/tree/v0.8.4) creado para *congelar* esta versión, preservando su funcionalidad central mientras introduce mejoras mínimas como mejoras de Calidad de Vida y asegurando que todo sea local y autocontenido.
 
 <p align="center">
   <img src="logo.svg" alt="LibreChat Logo Original" width="200"/>
