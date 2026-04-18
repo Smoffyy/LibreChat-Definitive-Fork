@@ -248,7 +248,6 @@ const qwenModels = {
   'qwen-plus': 131000,
   'qwen-turbo': 1000000,
   'qwq-32b': 32000,
-  // Qwen3 models (newest)
   qwen3: 40960,
   'qwen3-14b': 40960,
   'qwen3-30b-a3b': 40960,
@@ -265,6 +264,9 @@ const qwenModels = {
   'qwen3-coder-plus': 128000,
   'qwen3-coder-flash': 128000,
   'qwen3-next-80b-a3b': 262144,
+  // Qwen3.5 models
+  'qwen3.5': 262144,
+  'qwen3.5-397b': 262144,
 };
 
 const ai21Models = {
